@@ -113,9 +113,12 @@ public class IntList {
             ptr_A = ptr_A.rest;
             ptr_C = ptr_C.rest;
         }
-        ptr_C.rest = B;
-        if(C.first == 0 && C.rest == null)
-            C = null;
+        if(isFirstC){
+            C = B;
+        }
+        else{
+            ptr_C.rest = B;
+        }
         return C;
     }
 
