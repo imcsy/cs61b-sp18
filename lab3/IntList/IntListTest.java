@@ -66,6 +66,52 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
+    @Test(timeout = 1000)
+    public void testReverse() {
+        // That the function returns a reversed list.
+        IntList A = IntList.of(1, 2, 3, 4, 5);
+        IntList originA = IntList.of(1, 2, 3, 4, 5);
+        IntList expA = IntList.of(5, 4, 3, 2, 1);
+        IntList outA = IntList.reverse(A);
+        assertEquals(expA, outA);
+
+        // That the function is destructive, i.e. when it is done running, the list pointed to
+        // by A has been tampered with. You can use assertNotEquals. This is sort of a silly test.
+        assertNotEquals(A, originA);
+
+        // That the method handles a null input properly.
+        IntList C = null;
+        IntList expC = null;
+        IntList outC = IntList.reverse(C);
+        assertEquals(expC, outC);
+    }
+
+    @Test
+    public void testFindLast2() {
+        // That the function returns a reversed list.
+        IntList A = IntList.of(1, 2, 3, 4, 5);
+        IntList originA = A;
+        IntList exp = IntList.of(4, 5);
+        IntList out = IntList.findLast2(A);
+        assertEquals(exp, out);
+
+        //not destructive
+        assertEquals(originA, A);
+    }
+
+
+    @Test
+    public void testDeleteLast() {
+        // That the function returns a reversed list.
+        IntList A = IntList.of(1, 2, 3, 4, 5);
+        IntList originA = A;
+        IntList exp_out = IntList.of(5);
+        IntList exp_A = IntList.of(1, 2, 3, 4);
+        IntList out = IntList.deleteLast(A);
+        assertEquals(exp_out, out);
+        assertEquals(exp_A, A);
+    }
+
     /** If you're running this from the command line, you'll need
       * to add a main method. See ArithmeticTest.java for an
       * example. */
